@@ -1,4 +1,4 @@
-# THE CHALLENGE
+# THE CHALLENGE - ReactJS Exam @SoftUni.bg
 * Your task is to design and implement a web application (Single Page Application) using React.js. Use a service like Kinvey or Firebase for your back-end or create your own with Node.js and MongoDB or a framework in another language (ASP.NET, Spring, Symfony). It can be a discussion forum, blog system, e-commerce site, online gaming site, social network, or any other web application of your choice. 
 
 ## 1.0 Application Structure
