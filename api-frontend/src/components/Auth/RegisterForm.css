@@ -1,0 +1,30 @@
+.register-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: rgb(245, 245, 245);
+  padding: 2rem 4rem;
+}
+
+.register-form > input {
+  font-size: 2rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.register-form > button {
+  background-color: rgb(141, 141, 141);
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border: none;
+  width: auto;
+}
+
+.register-form > label {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}

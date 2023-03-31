@@ -1,0 +1,18 @@
+#search-box {
+  background-color: aqua;
+}
+
+#search-bar {
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+#search-btn {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+#search-form {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+}

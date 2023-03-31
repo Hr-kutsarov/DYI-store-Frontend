@@ -1,0 +1,10 @@
+header {
+  height: 10vh;
+  background-color: rgb(75, 75, 75);
+  color: white;
+}
+
+h1 {
+  margin: 2rem;
+  position: absolute;
+}

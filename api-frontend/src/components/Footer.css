@@ -1,0 +1,24 @@
+footer {
+  display: flex;
+  background-color: rgb(211, 211, 211);
+  justify-content: space-between;
+}
+
+footer > div {
+  padding: 2rem;
+}
+
+footer > ul {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+}
+
+footer > ul > li:first-child {
+  margin-right: 2rem;
+}
+
+footer > ul > li {
+  list-style: none;
+  color: white;
+}
