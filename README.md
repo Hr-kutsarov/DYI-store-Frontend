@@ -1,3 +1,17 @@
+
+# THE SOLUTION:
+
+### Navigation
+* On landing page: if the user is not authenticated , the page will show Footer, Page info about the company, login section and Footer. If the user is authenticated he'll be directed to the Main component (contains Header, Basket, Search, Product query list, Footer AND a Logout (the state depends on isLogged being true) button)
+** If the user is Admin or Moderator he will also be able to see (Orders) section
+
+* On login page: shows inputs (username, password) and button which sends a POST request to the api and saves the state of the response (which is also displayed above the form) and a (Register) button which leads to the (./register) component
+** On status code 200: the user is redirected to the (Main) component 
+** On failure the appropriate errors will be displayed
+
+* On register page: shows the response status field dynamically,  the input fields (username, password) a (submit) button and a (return to index) button. ** On status 201 the user is redirected to the (Main) section. ** Displayes the response status above the form.
+
+===========================================================
 # THE CHALLENGE - ReactJS Exam @SoftUni.bg
 * Your task is to design and implement a web application (Single Page Application) using React.js. Use a service like Kinvey or Firebase for your back-end or create your own with Node.js and MongoDB or a framework in another language (ASP.NET, Spring, Symfony). It can be a discussion forum, blog system, e-commerce site, online gaming site, social network, or any other web application of your choice. 
 
@@ -55,3 +69,5 @@ Each student will have to deliver a public defense of their work in front of the
 * You must submit your project before 23:59 on 27 Mar using a survey that will show up on 22 Mar. A presentation schedule will be available on 8 Apr and will include only the projects that were submitted beforehand. Keep in mind that after submitting your project you are allowed to work on it until the date of the project defense. Non-submitted projects will NOT be evaluated.
 ## 8. Restrictions
 * You can use parts (some components, routing configurations, form validation, etc...) of the course workshop, but you are NOT allowed to use the whole workshop as your project assignment. You are NOT allowed to use HTML & CSS structures from JS Back-End and JS Applications Courses.
+
+
