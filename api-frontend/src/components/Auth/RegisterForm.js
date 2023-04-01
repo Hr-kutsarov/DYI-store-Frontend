@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import "./RegisterForm.css";
+import { useAuthStore } from "../../services/GlobalState";
 
 export const RegisterForm = (props) => {
+  const logIn = useAuthStore((state) => state.logIn);
+  const setGlobalUsername = useAuthStore((state) => state.setUsername);
+  const registered = useAuthStore((state) => state.registered);
+  const dontWantToRegister = useAuthStore((state) => state.dontWantToRegister);
+
   const [usr, setUsername] = useState("");
   const [pwd, setPassword] = useState("");
   const [err, setErr] = useState("");
 
+  const handleRegisterState = () => {
+    dontWantToRegister();
+  };
   const onUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -31,6 +40,9 @@ export const RegisterForm = (props) => {
       .then(function (response) {
         if (response.status === 201) {
           setErr(response.statusText + " Successfully");
+          logIn();
+          dontWantToRegister();
+          setGlobalUsername(usr);
         }
       })
       .catch(function (error) {
@@ -42,25 +54,34 @@ export const RegisterForm = (props) => {
   };
 
   return (
-    <div id="register-form-box" onSubmit={handleSubmit}>
-      <form className="register-form" onS>
-        <div className="error">{err}</div>
-        <label id="register-form-label">Register</label>
-        <input
-          type="text"
-          placeholder="username"
-          value={usr}
-          onChange={onUsernameChange}
-        ></input>
+    <>
+      {registered && (
+        <div id="register-form-box" onSubmit={handleSubmit}>
+          <form className="register-form" onS>
+            <div className="error">{err}</div>
+            <label id="register-form-label">Register</label>
+            <input
+              type="text"
+              placeholder="username"
+              value={usr}
+              onChange={onUsernameChange}
+            ></input>
 
-        <input
-          type="password"
-          placeholder="password"
-          value={pwd}
-          onChange={onPasswordChange}
-        ></input>
-        <button onClick={handleSubmit}>Submit</button>
-      </form>
-    </div>
+            <input
+              type="password"
+              placeholder="password"
+              value={pwd}
+              onChange={onPasswordChange}
+            ></input>
+            <button className="btn" onClick={handleSubmit}>
+              Submit
+            </button>
+            <button className="btn" onClick={handleRegisterState}>
+              I dont want to register.
+            </button>
+          </form>
+        </div>
+      )}
+    </>
   );
 };
