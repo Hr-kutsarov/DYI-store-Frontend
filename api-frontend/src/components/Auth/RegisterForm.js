@@ -6,8 +6,9 @@ import { useAuthStore } from "../../services/GlobalState";
 
 export const RegisterForm = (props) => {
   const logIn = useAuthStore((state) => state.logIn);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const setGlobalUsername = useAuthStore((state) => state.setUsername);
-  const registered = useAuthStore((state) => state.registered);
+  const wantsToRegister = useAuthStore((state) => state.registered);
   const dontWantToRegister = useAuthStore((state) => state.dontWantToRegister);
 
   const [usr, setUsername] = useState("");
@@ -41,6 +42,7 @@ export const RegisterForm = (props) => {
         if (response.status === 201) {
           setErr(response.statusText + " Successfully");
           logIn();
+          // hides the register form
           dontWantToRegister();
           setGlobalUsername(usr);
         }
@@ -55,7 +57,7 @@ export const RegisterForm = (props) => {
 
   return (
     <>
-      {registered && (
+      {wantsToRegister && !isLoggedIn && (
         <div id="register-form-box" onSubmit={handleSubmit}>
           <form className="register-form" onS>
             <div className="error">{err}</div>

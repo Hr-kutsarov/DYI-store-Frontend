@@ -12,6 +12,7 @@ export const useAuthStore = create((set) => ({
   token: "",
   setToken: (tokenString) =>
     set((state) => ({ token: (state.token = tokenString) })),
+  deleteToken: () => set((state) => ({ token: (state.token = "") })),
   //
   isLoggedIn: false,
   logIn: () => set((state) => ({ isLoggedIn: (state.isLoggedIn = true) })),

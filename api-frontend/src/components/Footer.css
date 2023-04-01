@@ -1,10 +1,11 @@
 footer {
   display: flex;
-  background-color: rgb(211, 211, 211);
+  background-color: #1b3e7ee5;
   justify-content: space-between;
 }
 
 footer > div {
+  color: white;
   padding: 2rem;
 }
 

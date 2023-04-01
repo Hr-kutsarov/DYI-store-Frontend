@@ -10,7 +10,7 @@ export const Header = (props) => {
     <header>
       {isLoggedIn && (
         <>
-          <h1>Welcome back {username}!</h1>
+          <h1>Welcome back {username} !</h1>
         </>
       )}
 

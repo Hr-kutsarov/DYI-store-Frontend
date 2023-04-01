@@ -1,5 +1,7 @@
 import React from "react";
 import "./Footer.css";
+import { useAuthStore } from "../services/GlobalState";
+import axios from "axios";
 
 export const Footer = () => {
   const handleOnClickContacts = () => {
@@ -7,6 +9,7 @@ export const Footer = () => {
   };
 
   const handleOnClickInfo = () => {
+    axios.get("");
     console.log("More info");
   };
 

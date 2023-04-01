@@ -11,6 +11,8 @@ export const LoginForm = (props) => {
   const logout = useAuthStore((state) => state.logout);
   const username = useAuthStore((state) => state.username);
   const setUsername = useAuthStore((state) => state.setUsername);
+  const token = useAuthStore((state) => state.token);
+  const setToken = useAuthStore((state) => state.setToken);
   const wantToRegister = useAuthStore((state) => state.wantToRegister);
 
   // local state
@@ -45,6 +47,8 @@ export const LoginForm = (props) => {
       )
       .then(function (response) {
         if (response.status === 200) {
+          console.log(response.data.token);
+          setToken(response.data.token);
           console.log("Logged in!");
           // sets the global state of Logged in to True, Logging in hides the Register and Login panels and displays the Logout button
           logIn();
@@ -64,8 +68,12 @@ export const LoginForm = (props) => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
+    console.log(token);
+
     axios
-      .post("http://localhost:8000/api_auth/logout/", {})
+      .get("http://localhost:8000/api_auth/logout/", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(function (response) {
         if (response.status === 200) {
           console.log(
