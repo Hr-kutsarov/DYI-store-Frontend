@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import "./LoginForm.css";
 import { useAuthStore } from "../../services/GlobalState";
 
@@ -33,7 +32,8 @@ export const LoginForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //axios uses the current values of the input fields and sends the data
+    // axios uses the current values of the input fields and sends the data
+    // uses the globally stored username and locally stored state password
     axios
       .post(
         "http://localhost:8000/api_auth/login/",
@@ -41,9 +41,9 @@ export const LoginForm = (props) => {
           username: username,
           password: pwd,
         },
-
-        // TODO: add token
-        { headers: {} }
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       )
       .then(function (response) {
         if (response.status === 200) {

@@ -1,7 +1,5 @@
 import React from "react";
 import "./ProductList.css";
-import { Product } from "./Product";
-import axios from "axios";
 
 export const ProductList = (props) => {
   const { products } = props;

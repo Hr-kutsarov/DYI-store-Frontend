@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import "./RegisterForm.css";
 import { useAuthStore } from "../../services/GlobalState";
 
