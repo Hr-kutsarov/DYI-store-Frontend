@@ -8,10 +8,12 @@ import { ProductList } from "./components/ProductList";
 import { RegisterForm } from "./components/Auth/RegisterForm";
 
 import axios from "axios";
+import { useAuthStore } from "./services/GlobalState";
 
 const baseUrl = "http://127.0.0.1:8000/api";
 
 function App() {
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState("");
   const [products, setProducts] = useState([]);
@@ -31,8 +33,12 @@ function App() {
       <Header isLoading={isLoading} />
       <LoginForm user={user} />
       <RegisterForm user={user} />
-      <Search products={products} />
-      <ProductList products={products} />
+      {isLoggedIn && (
+        <>
+          <Search products={products} />
+          <ProductList products={products} />
+        </>
+      )}
       <Footer />
     </>
   );

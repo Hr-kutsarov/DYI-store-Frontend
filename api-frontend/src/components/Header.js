@@ -6,8 +6,6 @@ export const Header = (props) => {
   const username = useAuthStore((state) => state.username);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
 
-  const handleLogout = () => {};
-
   return (
     <header>
       {isLoggedIn && (

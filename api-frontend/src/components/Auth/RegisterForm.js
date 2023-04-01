@@ -46,7 +46,7 @@ export const RegisterForm = (props) => {
         }
       })
       .catch(function (error) {
-        setErr(error.message);
+        setErr(`Whoops, wrong data. ${error.message}`);
       });
 
     setUsername("");

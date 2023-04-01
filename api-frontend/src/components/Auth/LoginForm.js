@@ -11,8 +11,8 @@ export const LoginForm = (props) => {
   const logout = useAuthStore((state) => state.logout);
   const username = useAuthStore((state) => state.username);
   const setUsername = useAuthStore((state) => state.setUsername);
-  const registered = useAuthStore((state) => state.wantToRegister);
   const wantToRegister = useAuthStore((state) => state.wantToRegister);
+
   // local state
   const [pwd, setPassword] = useState("");
   const [err, setErr] = useState("");
@@ -46,8 +46,10 @@ export const LoginForm = (props) => {
       .then(function (response) {
         if (response.status === 200) {
           console.log("Logged in!");
-
+          // sets the global state of Logged in to True, Logging in hides the Register and Login panels and displays the Logout button
           logIn();
+          // using the field where errors are shown to display the status code as a form of visual confirmation
+          // TODO: remove this
           setErr(response.statusText);
         }
       })
@@ -55,6 +57,7 @@ export const LoginForm = (props) => {
         setErr(error.message);
       });
 
+    // logging in resets the state of the password and message fields
     setPassword("");
     setErr("");
   };
@@ -68,14 +71,18 @@ export const LoginForm = (props) => {
           console.log(
             `${response.status} status code. You have successfully logged out. Congratulations!`
           );
+          // logging out sets the login state to False and clears the error fields
           logout();
           setErr("");
         }
       })
-      .catch(function (error) {});
+      .catch(function (error) {
+        // TODO: Catch errors
+      });
   };
 
   const handleRegisterBtn = () => {
+    // sets the registered state to True, wanting to register triggers the Register panel
     wantToRegister();
   };
 
