@@ -1,5 +1,5 @@
 #search-box {
-  background-color: aqua;
+  background-color: transparent;
 }
 
 #search-bar {
@@ -14,5 +14,5 @@
 
 #search-form {
   display: grid;
-  grid-template-columns: 6fr 1fr;
+  grid-template-columns: 1fr;
 }

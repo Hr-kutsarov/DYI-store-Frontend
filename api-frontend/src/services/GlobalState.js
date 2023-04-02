@@ -24,7 +24,15 @@ export const useAuthStore = create((set) => ({
   wantToRegister: () =>
     set((state) => ({ registered: (state.registered = true) })),
   //
-  ALL_PRODUCTS: {},
+  allProducts: {},
   setProducts: (data) =>
-    set((state) => ({ ALL_PRODUCTS: (state.ALL_PRODUCTS = data) })),
+    set((state) => ({ allProducts: (state.allProducts = data) })),
+  //
+  searchData: "",
+  setSearchData: (data) =>
+    set((state) => ({ searchData: (state.searchData = data) })),
+  //
+  searchedData: {},
+  setSearchedData: (data) =>
+    set((state) => ({ searchedData: (state.searchedData = data) })),
 }));
