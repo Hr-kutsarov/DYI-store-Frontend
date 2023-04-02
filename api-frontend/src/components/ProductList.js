@@ -10,41 +10,35 @@ export const ProductList = (props) => {
   const allProducts = useAuthStore((state) => state.allProducts);
   const searchData = useAuthStore((state) => state.searchData);
   const searchedData = useAuthStore((state) => state.searchData);
+  const allSections = useAuthStore((state) => state.allStores);
+  const allLocations = useAuthStore((state) => state.allSections);
   // local state store
-  const [stores, setStores] = useState({});
-  const [sections, setSections] = useState({});
 
-  const onInfoClick = (id) => {};
-
-  const getAllStores = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api/store");
-    console.log(response.data);
-    setStores(response.data);
+  const sectionString = (id) => {
+    const filtered = allSections.filter((obj) => obj.id === id);
+    return filtered[0]["name"];
   };
 
-  const getAllSections = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api/section");
-    console.log(response.data);
-    setSections(response.data);
+  const locationString = (id) => {
+    const filtered = allLocations.filter((obj) => obj.id === id);
+    return filtered[0]["name"];
   };
-
-  useEffect(() => {
-    getAllStores();
-    getAllSections();
-  }, []);
 
   if (!searchedData) {
     return products.map((p) => {
       return (
-        <li className="product-list" key={p.id} onClick={onInfoClick}>
+        <li className="product-list" key={p.id}>
           <span>{p.id}</span>
           <span>{p.title}</span>
+          <span>{sectionString(p.section)}</span>
+
           <span>{(p.price / p.quantity + 1).toFixed(2)}</span>
           <span>{p.status}</span>
           <span>
             Q:
             {p.quantity}
           </span>
+          <span>{locationString(p.location)}</span>
         </li>
       );
     });

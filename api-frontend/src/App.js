@@ -11,8 +11,11 @@ import axios from "axios";
 import { useAuthStore } from "./services/GlobalState";
 
 function App() {
+  const setAllStores = useAuthStore((state) => state.setAllStores);
+  const setAllSections = useAuthStore((state) => state.setAllSections);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const [products, setProducts] = useState([]);
+
   //
   const setProductsGlobally = useAuthStore((state) => state.setProducts);
 
@@ -23,8 +26,22 @@ function App() {
     setProductsGlobally(response.data);
   };
 
+  const getAllStores = async () => {
+    let response = await axios.get("http://127.0.0.1:8000/api/store");
+    // console.log(response.data);
+    setAllStores(response.data);
+  };
+
+  const getAllSections = async () => {
+    let response = await axios.get("http://127.0.0.1:8000/api/section");
+    // console.log(response.data);
+    setAllSections(response.data);
+  };
+
   useEffect(() => {
     getAllProducts();
+    getAllStores();
+    getAllSections();
   }, []);
 
   return (

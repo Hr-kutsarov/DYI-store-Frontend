@@ -3,7 +3,7 @@ import "./Search.css";
 import { SearchedData } from "./SearchedData";
 import { useAuthStore } from "../services/GlobalState";
 
-export const Search = (props) => {
+export const Search = () => {
   const ref = useRef();
 
   // global state store selectors
@@ -12,13 +12,6 @@ export const Search = (props) => {
   const allProducts = useAuthStore((state) => state.allProducts);
 
   const setSearchedData = useAuthStore((state) => state.setSearchedData);
-  // const funct = () => {
-  //   collection
-  //     .filter((p) => p.title.toLowerCase())
-  //     .includes(searchWord.toLowerCase())
-  //     .slice(0, 10)
-  //     .sort((a, b) => a.title.localeCompare(b.title));
-  // };
 
   const handleSearch = (e) => {
     const data = e.target.value.toLowerCase();

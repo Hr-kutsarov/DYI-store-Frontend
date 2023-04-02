@@ -28,6 +28,14 @@ export const useAuthStore = create((set) => ({
   setProducts: (data) =>
     set((state) => ({ allProducts: (state.allProducts = data) })),
   //
+  allStores: {},
+  setAllStores: (data) =>
+    set((state) => ({ allStores: (state.allStores = data) })),
+  //
+  allSections: {},
+  setAllSections: (data) =>
+    set((state) => ({ allSections: (state.allSections = data) })),
+  //
   searchData: "",
   setSearchData: (data) =>
     set((state) => ({ searchData: (state.searchData = data) })),

@@ -1,6 +1,6 @@
 .product-list {
   display: grid;
-  grid-template-columns: 1fr 3fr 2fr 2fr 2fr;
+  grid-template-columns: 1fr 3fr 2fr 2fr 2fr 2fr 2fr;
 }
 .product-list > span {
   list-style: none;
