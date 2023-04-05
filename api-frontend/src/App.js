@@ -6,14 +6,22 @@ import { Footer } from "./components/Footer";
 import { useState, useEffect } from "react";
 import { ProductList } from "./components/ProductList";
 import { RegisterForm } from "./components/Auth/RegisterForm";
-
+import { CreateProduct } from "./components/CreateProduct";
 import axios from "axios";
 import { useAuthStore } from "./services/GlobalState";
+import { ProductDetails } from "./components/ProductDetails";
 
 function App() {
   const setAllStores = useAuthStore((state) => state.setAllStores);
   const setAllSections = useAuthStore((state) => state.setAllSections);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const toggledProductDetailsPanel = useAuthStore(
+    (state) => state.toggledProductDetailsPanel
+  );
+  const toggledProductCreatePanel = useAuthStore(
+    (state) => state.toggledProductCreatePanel
+  );
+
   const [products, setProducts] = useState([]);
 
   //
@@ -49,12 +57,16 @@ function App() {
       <Header />
       <LoginForm />
       <RegisterForm />
+
       {isLoggedIn && (
         <>
           <Search products={products} />
+          {toggledProductCreatePanel && <CreateProduct />}
+          {toggledProductDetailsPanel && <ProductDetails />}
           <ProductList products={products} />
         </>
       )}
+
       <Footer />
     </>
   );

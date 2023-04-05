@@ -7,10 +7,9 @@ import { useAuthStore } from "../services/GlobalState";
 export const SearchedData = () => {
     const searchedData = useAuthStore((state) => state.searchedData);
     const searchData = useAuthStore((state) => state.searchData)
-    const onInfoClick = (id) => {};
+
 
     const allStores = useAuthStore((state) => state.allStores);
-    const allSections = useAuthStore((state) => state.allSections);
 
     const allLocations = useAuthStore((state) => state.allSections);
     // local state store
@@ -28,12 +27,12 @@ export const SearchedData = () => {
     if (searchData) {
         return searchedData.map((p) => {
             return (
-              <li className="product-list" key={p.id} onClick={onInfoClick}>
+              <li className="product-list" key={p.id}>
                 <span>{p.id}</span>
                 <span>{p.title}</span>
                 <span>{sectionString(p.section)}</span>
                 
-                <span>{(p.price / p.quantity + 1).toFixed(2)}</span>
+                <span>{(p.price / p.quantity).toFixed(2)}</span>
                 <span>{p.status}</span>
                 <span>
                   Q:

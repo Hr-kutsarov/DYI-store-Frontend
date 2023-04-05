@@ -43,4 +43,38 @@ export const useAuthStore = create((set) => ({
   searchedData: {},
   setSearchedData: (data) =>
     set((state) => ({ searchedData: (state.searchedData = data) })),
+  //
+  productDetails: {},
+  setProductDetails: (data) =>
+    set((state) => ({ productDetails: (state.productDetails = data) })),
+  //
+  toggledProductDetailsPanel: false,
+  onProductDetailsPanel: () =>
+    set((state) => ({
+      toggledProductDetailsPanel: (state.toggledProductDetailsPanel = true),
+    })),
+  offProductDetailsPanel: () =>
+    set((state) => ({
+      toggledProductDetailsPanel: (state.toggledProductDetailsPanel = false),
+    })),
+  //
+  toggledProductCreatePanel: true,
+  onProductCreatePanel: () =>
+    set((state) => ({
+      toggledProductCreatePanel: (state.toggledProductCreatePanel = true),
+    })),
+  offProductCreatePanel: () =>
+    set((state) => ({
+      toggledProductCreatePanel: (state.toggledProductCreatePanel = false),
+    })),
+  //
+  toggledProductEditPanel: false,
+  onProductEditPanel: () =>
+    set((state) => ({
+      toggledProductEditPanel: (state.toggledProductEditPanel = true),
+    })),
+  offProductEditPanel: () =>
+    set((state) => ({
+      toggledProductEditPanel: (state.toggledProductEditPanel = false),
+    })),
 }));

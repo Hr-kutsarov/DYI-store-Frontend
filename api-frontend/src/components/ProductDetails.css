@@ -1,0 +1,29 @@
+.product-details {
+  display: grid;
+  margin: auto;
+  padding: 2rem;
+  max-width: 1000px;
+}
+
+.product-details > h3 {
+  margin: 1rem;
+}
+.product-details > p {
+  margin: 0.5rem 1rem;
+}
+
+.button-wrapper-info {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin: 1rem;
+}
+
+.button-wrapper-info > button {
+  margin-right: 0.7rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.2rem;
+  background-color: grey;
+  color: white;
+  border: none;
+}
