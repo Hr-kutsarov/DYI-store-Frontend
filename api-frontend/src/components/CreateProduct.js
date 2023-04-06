@@ -1,7 +1,9 @@
 import "./CreateProduct.css";
 import { useAuthStore } from "../services/GlobalState";
 import { useState } from "react";
-import axios from "axios";
+import Select from "react-select";
+import api from "../Api/utils.js";
+
 export const CreateProduct = () => {
   // global state
 
@@ -18,10 +20,11 @@ export const CreateProduct = () => {
   const [description, setDescription] = useState("");
   const [selectedSection, setSelectedSection] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [currentStatus, setCurrentStatus] = useState("");
   const [msg, setMsg] = useState("");
 
   const refreshList = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api");
+    let response = await api.get("api/");
     setProducts(response.data);
     console.log(response.data);
   };
@@ -37,9 +40,9 @@ export const CreateProduct = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
+    api
       .post(
-        "http://localhost:8000/api/",
+        "api/",
         {
           title: title,
           type: type,
@@ -48,6 +51,7 @@ export const CreateProduct = () => {
           description: description,
           section: selectedSection,
           location: selectedLocation,
+          status: currentStatus,
         },
         { headers: {} }
       )
@@ -62,8 +66,6 @@ export const CreateProduct = () => {
       .catch(function (error) {
         setMsg(`Whoops, wrong data. ${error.message}`);
       });
-
-    setMsg("");
   };
 
   const handleCancel = (e) => {
@@ -71,6 +73,14 @@ export const CreateProduct = () => {
     offCreatePanel();
   };
 
+  const options = [
+    { value: "Ordered", label: "Ordered" },
+    { value: "Stored", label: "Stored" },
+    { value: "Transit", label: "Transit" },
+    { value: "Returned", label: "Returned" },
+    { value: "Damaged", label: "Damaged" },
+    { value: "Sold", label: "Sold" },
+  ];
   return (
     <>
       <div className="create-products-box">
@@ -132,27 +142,57 @@ export const CreateProduct = () => {
               <option value={store.id}>{store.name}</option>
             ))}
           </select>
+          <select
+            value={currentStatus}
+            onChange={(e) => setCurrentStatus(e.target.value)}
+          >
+            <option value="Ordered">Ordered</option>
+            <option value="Sold">Sold</option>
+            <option value="Transit">Transit</option>
+            <option value="Stored">Stored</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Returned">Returned</option>
+          </select>
+
           {/* <select id="edit-status" placeholder="status">
-            <option value="Ordered" onChange={(e) => setStatus(e.target.value)}>
+            <option
+              value={status}
+              onChange={(e) => setStatus(e.target.textContent)}
+            >
               Ordered
             </option>
-            <option value="Stored" onChange={(e) => setStatus(e.target.value)}>
+            <option
+              value={status}
+              onChange={(e) => setStatus(e.target.textContent)}
+            >
               Stored
             </option>
-            <option value="Transit">Transit</option>
             <option
-              value="Returned"
-              onChange={(e) => setStatus(e.target.value)}
+              value={status}
+              onChange={(e) => setStatus(e.target.textContent)}
+            >
+              Transit
+            </option>
+            <option
+              value={status}
+              onChange={(e) => setStatus(e.target.textContent)}
             >
               Returned
             </option>
-            <option value={status} onClick={() => setStatus("Damaged")}>
+            <option
+              value={status}
+              onClick={(e) => setStatus(e.target.textContent)}
+            >
               Damaged
             </option>
-            <option value="Sold" onChange={(e) => setStatus(e.target.value)}>
+            <option
+              value={status}
+              onChange={(e) => setStatus(e.target.textContent)}
+            >
               Sold
             </option>
           </select> */}
+
           <div className="button-box">
             <button id="edit-submit" onClick={handleSubmit}>
               Create

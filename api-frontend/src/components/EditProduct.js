@@ -46,6 +46,7 @@ export const EditProduct = () => {
           description: description,
           section: selectedSection,
           location: selectedLocation,
+          status: selectedStatus,
         },
         { headers: {} }
       )
@@ -113,39 +114,33 @@ export const EditProduct = () => {
           <select
             id="edit-location"
             placeholder="location"
-            value="Select Location"
+            value={selectedLocation}
+            onChange={(e) => setSelectedLocation(e.target.value)}
           >
             {allSections.map((section) => (
-              <option
-                value={section.id}
-                onChange={(e) => setSelectedSection(e.target.value)}
-              >
-                {section.name}
-              </option>
+              <option value={section.id}>{section.name.toString()}</option>
             ))}
           </select>
           <select
             id="edit-section"
             placeholder="section"
-            value="Select Section"
+            value={selectedSection}
+            onChange={(e) => setSelectedSection(e.target.value)}
           >
             {allStores.map((store) => (
-              <option
-                value={store.id}
-                onChange={(e) => setSelectedLocation(e.target.value)}
-              >
-                {store.name}
-              </option>
+              <option value={store.id}>{store.name.toString()}</option>
             ))}
           </select>
           <select
-            id="edit-status"
-            placeholder="status"
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
           >
-            <option value="Sold">Sold</option>
             <option value="Ordered">Ordered</option>
+            <option value="Sold">Sold</option>
+            <option value="Transit">Transit</option>
+            <option value="Stored">Stored</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Returned">Returned</option>
           </select>
           <div className="button-box">
             <button id="edit-submit" onClick={handleSubmit}>
