@@ -1,5 +1,7 @@
 #search-box {
   background-color: transparent;
+  display: grid;
+  margin: auto;
 }
 
 #search-bar {

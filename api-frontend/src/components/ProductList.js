@@ -4,8 +4,7 @@ import { Product } from "./Product";
 
 import { useAuthStore } from "../services/GlobalState";
 
-export const ProductList = (props) => {
-  const { products } = props;
+export const ProductList = () => {
   // const allProducts = useAuthStore((state) => state.allProducts);
   // const searchData = useAuthStore((state) => state.searchData);
   const searchedData = useAuthStore((state) => state.searchData);

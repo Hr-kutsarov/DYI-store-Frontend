@@ -42,7 +42,7 @@ export const LoginForm = (props) => {
           password: pwd,
         },
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {},
         }
       )
       .then(function (response) {

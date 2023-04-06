@@ -1,0 +1,37 @@
+.edit-products-box {
+  display: flex;
+  padding: 2rem;
+}
+
+.edit-products-box > form {
+  display: grid;
+  margin: auto;
+}
+
+.edit-products-box > form > input {
+  padding: 0.5rem;
+  margin: 0.2rem;
+  min-height: 2rem;
+  min-width: 400px;
+}
+
+.edit-products-box > form > select {
+  margin: 0.2rem;
+  min-height: 2rem;
+  min-width: 400px;
+  padding: 0.5rem;
+}
+
+.edit-products-box > form > .button-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.edit-products-box > form > .button-box > button {
+  font-size: 1.2rem;
+  min-width: 7rem;
+  padding: 0.5rem 0.9rem;
+}

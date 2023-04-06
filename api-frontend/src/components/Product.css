@@ -1,0 +1,9 @@
+#actions-product-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
+#actions-product-list > button {
+  padding: 0.5rem 1rem;
+}

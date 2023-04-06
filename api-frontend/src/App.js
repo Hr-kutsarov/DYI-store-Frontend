@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { ProductList } from "./components/ProductList";
 import { RegisterForm } from "./components/Auth/RegisterForm";
 import { CreateProduct } from "./components/CreateProduct";
+import { EditProduct } from "./components/EditProduct";
+
 import axios from "axios";
 import { useAuthStore } from "./services/GlobalState";
 import { ProductDetails } from "./components/ProductDetails";
@@ -21,6 +23,10 @@ function App() {
   const toggledProductCreatePanel = useAuthStore(
     (state) => state.toggledProductCreatePanel
   );
+  const toggledProductEditPanel = useAuthStore(
+    (state) => state.toggledProductEditPanel
+  );
+  const productDetails = useAuthStore((state) => state.productDetails);
 
   const [products, setProducts] = useState([]);
 
@@ -61,9 +67,10 @@ function App() {
       {isLoggedIn && (
         <>
           <Search products={products} />
+          <ProductList />
           {toggledProductCreatePanel && <CreateProduct />}
+          {toggledProductEditPanel && <EditProduct />}
           {toggledProductDetailsPanel && <ProductDetails />}
-          <ProductList products={products} />
         </>
       )}
 

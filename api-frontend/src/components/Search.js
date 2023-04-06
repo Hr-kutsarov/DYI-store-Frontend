@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import "./Search.css";
 import { SearchedData } from "./SearchedData";
 import { useAuthStore } from "../services/GlobalState";
@@ -10,7 +10,10 @@ export const Search = () => {
   const searchData = useAuthStore((state) => state.searchData);
   const setSearchData = useAuthStore((state) => state.setSearchData);
   const allProducts = useAuthStore((state) => state.allProducts);
-
+  const offCreatePanel = useAuthStore((state) => state.offCreatePanel);
+  const offDetailsPanel = useAuthStore((state) => state.offDetailsPanel);
+  const offInfoPanel = useAuthStore((state) => state.offCreatePanel);
+  const offEditPanel = useAuthStore((state) => state.offEditPanel);
   const setSearchedData = useAuthStore((state) => state.setSearchedData);
 
   const handleSearch = (e) => {
@@ -21,6 +24,10 @@ export const Search = () => {
     );
     setSearchedData(result);
     setSearchData(e.target.value);
+    offCreatePanel();
+    offInfoPanel();
+    offDetailsPanel();
+    offEditPanel();
   };
 
   useEffect(() => {

@@ -1,4 +1,37 @@
-.create-product {
+.create-products-box {
   display: flex;
   padding: 2rem;
+}
+
+.create-products-box > form {
+  display: grid;
+  margin: auto;
+}
+
+.create-products-box > form > input {
+  margin: 0.2rem;
+  min-height: 2rem;
+  min-width: 400px;
+  padding: 0.5rem;
+}
+
+.create-products-box > form > select {
+  margin: 0.2rem;
+  min-height: 2rem;
+  min-width: 400px;
+  padding: 0.5rem;
+}
+
+.create-products-box > form > .button-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.create-products-box > form > .button-box > button {
+  font-size: 1.2rem;
+  min-width: 7rem;
+  padding: 0.5rem 0.9rem;
 }
