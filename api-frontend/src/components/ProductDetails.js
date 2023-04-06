@@ -9,10 +9,21 @@ export const ProductDetails = () => {
   let offDetailsPanel = useAuthStore((state) => state.offDetailsPanel);
   let onEditPanel = useAuthStore((state) => state.onEditPanel);
   let setProducts = useAuthStore((state) => state.setProducts);
-
+  let allStores = useAuthStore((state) => state.allStores);
+  let allSections = useAuthStore((state) => state.allSections);
   // local state
   let [msg, setMsg] = useState("");
 
+  const pricePerUnit = () => {
+    return (productDetails.price / productDetails.quantity).toFixed(2);
+  };
+  const displayStoreName = (number) => {
+    return allStores.filter((store) => store.id === number)[0]["name"];
+  };
+
+  const displaySectionName = (number) => {
+    return allSections.filter((section) => section.id === number)[0]["name"];
+  };
   // update the product list
   let refreshList = async () => {
     let response = await api.get("api/");
@@ -56,15 +67,12 @@ export const ProductDetails = () => {
         </figure>
         <h3>{productDetails.title}</h3>
         <p>Details: {productDetails.type}</p>
-        <p>
-          Price per unit:
-          {(productDetails.price / productDetails.quantity).toFixed(2)}
-        </p>
-        <p>{productDetails.location}</p>
-        <p>{productDetails.section}</p>
+        <p>Price per unit: {pricePerUnit()}</p>
+        <p>Location: {displayStoreName(productDetails.location)}</p>
+        <p>Section: {displaySectionName(productDetails.section)}</p>
         <p>Quantity: {productDetails.quantity}</p>
-        <p>{productDetails.description}</p>
-        <p>{productDetails.status}</p>
+        <p>Description: {productDetails.description}</p>
+        <p>Status: {productDetails.status}</p>
         {productDetails.is_featured ? <p>FEATURED</p> : <p>Not featured</p>}
         <div className="delete-msg-box">{msg}</div>
         <div className="button-wrapper-info">
