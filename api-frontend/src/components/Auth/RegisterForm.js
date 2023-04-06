@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./RegisterForm.css";
 import { useAuthStore } from "../../services/GlobalState";
+import api from "../../Api/utils.js";
 
 export const RegisterForm = (props) => {
   const logIn = useAuthStore((state) => state.logIn);
@@ -9,6 +9,8 @@ export const RegisterForm = (props) => {
   const setGlobalUsername = useAuthStore((state) => state.setUsername);
   const wantsToRegister = useAuthStore((state) => state.registered);
   const dontWantToRegister = useAuthStore((state) => state.dontWantToRegister);
+  const token = useAuthStore((state) => state.token);
+  const setToken = useAuthStore((state) => state.setToken);
 
   const [usr, setUsername] = useState("");
   const [pwd, setPassword] = useState("");
@@ -28,14 +30,14 @@ export const RegisterForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios
+    api
       .post(
         "http://localhost:8000/api_auth/register/",
         {
           username: usr,
           password: pwd,
         },
-        { headers: {} }
+        { headers: { Authorization: `Bearer ${token}` } }
       )
       .then(function (response) {
         if (response.status === 201) {
@@ -44,6 +46,7 @@ export const RegisterForm = (props) => {
           // hides the register form
           dontWantToRegister();
           setGlobalUsername(usr);
+          setToken(response.data.token);
         }
       })
       .catch(function (error) {

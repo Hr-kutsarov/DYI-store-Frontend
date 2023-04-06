@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../../Api/utils.js";
 import "./LoginForm.css";
 import { useAuthStore } from "../../services/GlobalState";
 
@@ -10,9 +10,8 @@ export const LoginForm = (props) => {
   const logout = useAuthStore((state) => state.logout);
   const username = useAuthStore((state) => state.username);
   const setUsername = useAuthStore((state) => state.setUsername);
-  const token = useAuthStore((state) => state.token);
   const setToken = useAuthStore((state) => state.setToken);
-  const wantToRegister = useAuthStore((state) => state.wantToRegister);
+  const onRegister = useAuthStore((state) => state.onRegister);
 
   // local state
   const [pwd, setPassword] = useState("");
@@ -28,15 +27,12 @@ export const LoginForm = (props) => {
     setPassword(e.target.value);
   };
 
-  // submit the entire form with the current state of the input fields
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // axios uses the current values of the input fields and sends the data
     // uses the globally stored username and locally stored state password
-    axios
+    api
       .post(
-        "http://localhost:8000/api_auth/login/",
+        "api_auth/login/",
         {
           username: username,
           password: pwd,
@@ -47,9 +43,7 @@ export const LoginForm = (props) => {
       )
       .then(function (response) {
         if (response.status === 200) {
-          console.log(response.data.token);
           setToken(response.data.token);
-          console.log("Logged in!");
           // sets the global state of Logged in to True, Logging in hides the Register and Login panels and displays the Logout button
           logIn();
           // using the field where errors are shown to display the status code as a form of visual confirmation
@@ -68,11 +62,10 @@ export const LoginForm = (props) => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    console.log(token);
 
-    axios
-      .get("http://localhost:8000/api_auth/logout/", {
-        headers: { Authorization: `Bearer ${token}` },
+    api
+      .get("api_auth/logout/", {
+        headers: {},
       })
       .then(function (response) {
         if (response.status === 200) {
@@ -91,7 +84,7 @@ export const LoginForm = (props) => {
 
   const handleRegisterBtn = () => {
     // sets the registered state to True, wanting to register triggers the Register panel
-    wantToRegister();
+    onRegister();
   };
 
   return (

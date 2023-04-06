@@ -9,7 +9,7 @@ import { RegisterForm } from "./components/Auth/RegisterForm";
 import { CreateProduct } from "./components/CreateProduct";
 import { EditProduct } from "./components/EditProduct";
 
-import axios from "axios";
+import api from "./Api/utils.js";
 import { useAuthStore } from "./services/GlobalState";
 import { ProductDetails } from "./components/ProductDetails";
 
@@ -26,7 +26,6 @@ function App() {
   const toggledProductEditPanel = useAuthStore(
     (state) => state.toggledProductEditPanel
   );
-  const productDetails = useAuthStore((state) => state.productDetails);
 
   const [products, setProducts] = useState([]);
 
@@ -35,19 +34,19 @@ function App() {
 
   // make a call to the API to get all data before the user is logged in. Allows hashing and smoother UX
   const getAllProducts = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api");
+    let response = await api.get("api/");
     setProducts(response.data);
     setProductsGlobally(response.data);
   };
 
   const getAllStores = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api/store");
+    let response = await api.get("api/store/");
     // console.log(response.data);
     setAllStores(response.data);
   };
 
   const getAllSections = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api/section");
+    let response = await api.get("api/section/");
     // console.log(response.data);
     setAllSections(response.data);
   };
@@ -66,9 +65,10 @@ function App() {
 
       {isLoggedIn && (
         <>
+          {toggledProductCreatePanel && <CreateProduct />}
           <Search products={products} />
           <ProductList />
-          {toggledProductCreatePanel && <CreateProduct />}
+
           {toggledProductEditPanel && <EditProduct />}
           {toggledProductDetailsPanel && <ProductDetails />}
         </>

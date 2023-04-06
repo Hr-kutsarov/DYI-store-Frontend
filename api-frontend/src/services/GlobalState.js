@@ -21,8 +21,7 @@ export const useAuthStore = create((set) => ({
   registered: false,
   dontWantToRegister: () =>
     set((state) => ({ registered: (state.registered = false) })),
-  wantToRegister: () =>
-    set((state) => ({ registered: (state.registered = true) })),
+  onRegister: () => set((state) => ({ registered: (state.registered = true) })),
   //
   allProducts: {},
   setProducts: (data) =>

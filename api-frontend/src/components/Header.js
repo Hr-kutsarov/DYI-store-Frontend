@@ -3,16 +3,18 @@ import "./Header.css";
 import { useAuthStore } from "../services/GlobalState";
 import { FaBeer } from "react-icons/fa";
 
-export const Header = (props) => {
+export const Header = () => {
   const username = useAuthStore((state) => state.username);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  let token = useAuthStore((state) => state.token);
 
   return (
     <header>
       {isLoggedIn && (
         <>
           <h1>
-            Welcome back {username} <FaBeer />!
+            Welcome back {username} {token}
+            <FaBeer />!
           </h1>
         </>
       )}

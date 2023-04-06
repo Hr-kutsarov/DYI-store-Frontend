@@ -1,7 +1,6 @@
-import { FaFolderPlus, FaInfoCircle, FaTrashAlt } from "react-icons/fa";
 import { useAuthStore } from "../services/GlobalState";
 import "./Product.css";
-import axios from "axios";
+import api from "../Api/utils.js";
 
 export const Product = ({
   id,
@@ -23,7 +22,7 @@ export const Product = ({
   let setProducts = useAuthStore((state) => state.setProducts);
 
   let refreshList = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api/");
+    let response = await api.get("api/");
     setProducts(response.data);
     console.log(response.data);
   };
@@ -42,14 +41,13 @@ export const Product = ({
     offDetailsPanel();
   };
   const handleInfoProduct = async () => {
-    let baseUrl = "http://127.0.0.1:8000/api/";
-    const response = await fetch(baseUrl + id);
-    const jsonData = await response.json();
-    setProductDetails(jsonData);
+    const response = await api.get(`api/${id}/`);
+    setProductDetails(response.data);
     onDetailsPanel();
     refreshList();
   };
 
+  let pricePerUnit = (price / quantity).toFixed(2);
   return (
     <li className="product-list" key={id}>
       <span id="actions-product-list">
@@ -59,7 +57,7 @@ export const Product = ({
       <span>{title}</span>
       <span>{sectionString(section)}</span>
 
-      <span>{(price / quantity).toFixed(2)}</span>
+      <span>{pricePerUnit}</span>
       <span>{status}</span>
       <span>
         Q:

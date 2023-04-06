@@ -1,7 +1,7 @@
 import { useAuthStore } from "../services/GlobalState";
 import "./EditProduct.css";
 import { useState } from "react";
-import axios from "axios";
+import api from "../Api/utils.js";
 
 export const EditProduct = () => {
   // global state
@@ -28,16 +28,16 @@ export const EditProduct = () => {
   const [msg, setMsg] = useState("");
 
   const refreshList = async () => {
-    let response = await axios.get("http://127.0.0.1:8000/api");
+    let response = await api.get("api/");
     setProducts(response.data);
     console.log(response.data);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Editing");
-    axios
+    // server call
+    api
       .put(
-        `http://localhost:8000/api/${productDetails.id}/`,
+        `api/${productDetails.id}/`,
         {
           title: title,
           type: type,
