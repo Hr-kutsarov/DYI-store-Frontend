@@ -9,12 +9,12 @@ export const ProductList = () => {
   const allProducts = useAuthStore((state) => state.allProducts);
 
   if (!searchedData) {
-    return allProducts.map((p) => {
-      return (
-        <div className="product-box">
+    return (
+      <div className="product-box">
+        {allProducts.map((p) => (
           <Product key={p.id} {...p} />
-        </div>
-      );
-    });
+        ))}
+      </div>
+    );
   }
 };

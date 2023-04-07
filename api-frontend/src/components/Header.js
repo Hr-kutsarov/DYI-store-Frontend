@@ -3,11 +3,22 @@ import "./Header.css";
 import { useAuthStore } from "../services/GlobalState";
 import { FaBeer } from "react-icons/fa";
 import api from "../Api/utils.js";
+
 export const Header = () => {
   const username = useAuthStore((state) => state.username);
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   // let token = useAuthStore((state) => state.token);
   const logout = useAuthStore((state) => state.logout);
+  const offEditPanel = useAuthStore((state) => state.offEditPanel);
+
+  const offDetailsPanel = useAuthStore((state) => state.onDetailsPanel);
+  const onCreatePanel = useAuthStore((state) => state.onCreatePanel);
+  const handleAddProduct = () => {
+    onCreatePanel();
+    offEditPanel();
+    offDetailsPanel();
+  };
+
   const handleLogout = async (e) => {
     e.preventDefault();
 
@@ -35,7 +46,9 @@ export const Header = () => {
           <h1>
             Welcome back {username} <FaBeer />!
           </h1>
-
+          <button id="new-product-btn" onClick={handleAddProduct}>
+            Create New
+          </button>
           <button id="logout" onClick={handleLogout}>
             Logout
           </button>

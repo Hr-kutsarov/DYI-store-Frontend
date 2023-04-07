@@ -4,6 +4,24 @@
   justify-content: space-evenly;
 }
 
-#actions-product-list > button {
-  padding: 0.5rem 1rem;
+.property {
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: whitesmoke;
+  display: flex;
+
+  align-items: center;
+}
+
+#show-info-btn {
+  background-color: white;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 50%;
+  min-height: 50px;
+  min-width: 50px;
+  border: none;
+  color: rgba(91, 18, 104, 0.705);
+  font-weight: 400;
+  font-size: 1rem;
 }

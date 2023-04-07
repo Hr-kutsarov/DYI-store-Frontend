@@ -28,3 +28,11 @@ h1 {
   color: whitesmoke;
   border-radius: 0.5rem;
 }
+
+#new-product-btn {
+  color: rgb(31, 53, 82);
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+}

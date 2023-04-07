@@ -15,10 +15,11 @@ export const Product = ({
   const allSections = useAuthStore((state) => state.allStores);
   const allLocations = useAuthStore((state) => state.allSections);
   const setProductDetails = useAuthStore((state) => state.setProductDetails);
-  const offEditPanel = useAuthStore((state) => state.offEditPanel);
+  const toggledProductDetailsPanel = useAuthStore(
+    (state) => state.toggledProductDetailsPanel
+  );
   const onDetailsPanel = useAuthStore((state) => state.onDetailsPanel);
-  const offDetailsPanel = useAuthStore((state) => state.onDetailsPanel);
-  const onCreatePanel = useAuthStore((state) => state.onCreatePanel);
+  const offDetailsPanel = useAuthStore((state) => state.offDetailsPanel);
   let setProducts = useAuthStore((state) => state.setProducts);
 
   let refreshList = async () => {
@@ -34,11 +35,7 @@ export const Product = ({
     const filtered = allLocations.filter((obj) => obj.id === id);
     return filtered[0]["name"];
   };
-  const handleAddProduct = () => {
-    onCreatePanel();
-    offEditPanel();
-    offDetailsPanel();
-  };
+
   const handleInfoProduct = async () => {
     const response = await api.get(`api/${id}/`);
     setProductDetails(response.data);
@@ -49,20 +46,25 @@ export const Product = ({
   let pricePerUnit = (price / quantity).toFixed(2);
   return (
     <li className="product-list" key={id}>
-      <span id="actions-product-list">
-        <button onClick={handleAddProduct}>new</button>
-        <button onClick={handleInfoProduct}>info</button>
-      </span>
-      <span>{title}</span>
-      <span>{sectionString(section)}</span>
+      <div
+        className="property"
+        id="actions-product-list"
+        onClick={handleInfoProduct}
+      >
+        <button id="show-info-btn" className="round-btn">
+          info
+        </button>
+      </div>
+      <div className="property">{title}</div>
+      <div className="property">{sectionString(section)}</div>
 
-      <span>{pricePerUnit}</span>
-      <span>{status}</span>
-      <span>
+      <div className="property">{pricePerUnit}</div>
+      <div className="property">{status}</div>
+      <div className="property">
         Q:
         {quantity}
-      </span>
-      <span>{locationString(location)}</span>
+      </div>
+      <div className="property">{locationString(location)}</div>
     </li>
   );
 };
