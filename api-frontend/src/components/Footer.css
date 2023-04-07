@@ -1,18 +1,21 @@
 footer {
   display: flex;
-  background-color: #1b3e7ee5;
+  background-color: #f8f8f8e5;
   justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
 }
 
-footer > div {
-  color: white;
-  padding: 2rem;
+footer > span {
+  color: linear-gradient(90deg, hsl(193, 78%, 49%) 0%, #00085160 100%);
+
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 footer > ul {
   display: flex;
   flex-direction: row;
-  padding: 2rem;
 }
 
 footer > ul > li:first-child {
@@ -21,5 +24,8 @@ footer > ul > li:first-child {
 
 footer > ul > li {
   list-style: none;
-  color: white;
+  color: linear-gradient(90deg, hsl(193, 78%, 49%) 0%, #00085160 100%);
+  font-size: 1.5rem;
+  font-weight: 550;
+  color: rgb(32, 32, 32);
 }

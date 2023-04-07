@@ -12,7 +12,7 @@ export const Footer = () => {
 
   return (
     <footer>
-      <div>Back to top </div>
+      <span>Back to top </span>
       <ul>
         <li onClick={handleOnClickContacts}>Contacts</li>
         <li onClick={handleOnClickInfo}>More Info</li>
