@@ -24,7 +24,6 @@ export const Product = ({
   let refreshList = async () => {
     let response = await api.get("api/");
     setProducts(response.data);
-    console.log(response.data);
   };
   const sectionString = (id) => {
     const filtered = allSections.filter((obj) => obj.id === id);

@@ -1,7 +1,6 @@
 import "./CreateProduct.css";
 import { useAuthStore } from "../services/GlobalState";
 import { useState } from "react";
-import Select from "react-select";
 import api from "../Api/utils.js";
 
 export const CreateProduct = () => {
@@ -73,14 +72,6 @@ export const CreateProduct = () => {
     offCreatePanel();
   };
 
-  const options = [
-    { value: "Ordered", label: "Ordered" },
-    { value: "Stored", label: "Stored" },
-    { value: "Transit", label: "Transit" },
-    { value: "Returned", label: "Returned" },
-    { value: "Damaged", label: "Damaged" },
-    { value: "Sold", label: "Sold" },
-  ];
   return (
     <>
       <div className="create-products-box">
@@ -129,7 +120,9 @@ export const CreateProduct = () => {
             onChange={(e) => setSelectedLocation(e.target.value)}
           >
             {allSections.map((section) => (
-              <option value={section.id}>{section.name}</option>
+              <option key={section.id} value={section.id}>
+                {section.name}
+              </option>
             ))}
           </select>
           <select
@@ -139,7 +132,9 @@ export const CreateProduct = () => {
             onChange={(e) => setSelectedSection(e.target.value)}
           >
             {allStores.map((store) => (
-              <option value={store.id}>{store.name}</option>
+              <option key={store.id} value={store.id}>
+                {store.name}
+              </option>
             ))}
           </select>
           <select

@@ -1,10 +1,30 @@
 header {
-  height: 10vh;
-  background-color: #1b3e7ee5;
-  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  background-color: #f3f3f3e5;
+  color: rgb(31, 53, 82);
+  padding: 2rem;
 }
 
 h1 {
-  margin: 2rem;
-  position: absolute;
+  display: block;
+  font-size: 1.5rem;
+}
+
+#logout {
+  padding: 1rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(31, 53, 82);
+}
+
+#logout:hover {
+  border: none;
+  background-color: rgb(31, 53, 82);
+  color: whitesmoke;
+  border-radius: 0.5rem;
 }

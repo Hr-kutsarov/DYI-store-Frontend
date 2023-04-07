@@ -8,7 +8,7 @@ import { ProductList } from "./components/ProductList";
 import { RegisterForm } from "./components/Auth/RegisterForm";
 import { CreateProduct } from "./components/CreateProduct";
 import { EditProduct } from "./components/EditProduct";
-
+import { CompanyInfo } from "./components/CompanyInfo";
 import api from "./Api/utils.js";
 import { useAuthStore } from "./services/GlobalState";
 import { ProductDetails } from "./components/ProductDetails";
@@ -26,16 +26,12 @@ function App() {
   const toggledProductEditPanel = useAuthStore(
     (state) => state.toggledProductEditPanel
   );
-
-  const [products, setProducts] = useState([]);
-
   //
   const setProductsGlobally = useAuthStore((state) => state.setProducts);
 
   // make a call to the API to get all data before the user is logged in. Allows hashing and smoother UX
   const getAllProducts = async () => {
     let response = await api.get("api/");
-    setProducts(response.data);
     setProductsGlobally(response.data);
   };
 
@@ -60,20 +56,20 @@ function App() {
   return (
     <>
       <Header />
-      <LoginForm />
+      {!isLoggedIn && <CompanyInfo />}
+      <div className="login-form-box">{!isLoggedIn && <LoginForm />}</div>
       <RegisterForm />
 
       {isLoggedIn && (
         <>
           {toggledProductCreatePanel && <CreateProduct />}
-          <Search products={products} />
+          <Search />
           <ProductList />
 
           {toggledProductEditPanel && <EditProduct />}
           {toggledProductDetailsPanel && <ProductDetails />}
         </>
       )}
-
       <Footer />
     </>
   );

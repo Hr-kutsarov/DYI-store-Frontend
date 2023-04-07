@@ -1,8 +1,24 @@
+.login-form-box {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  min-height: 70vh;
+}
+
 .login-form {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: rgb(245, 245, 245);
-  padding: 2rem 4rem;
+  background-color: rgb(235, 235, 235, 0.2);
+  max-width: 670px;
+  padding: 2rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+#login-form-label {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 2rem 1rem;
+  color: whitesmoke;
 }
 
 .login-form > input {
@@ -10,23 +26,38 @@
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
+  border: none;
+  max-width: 470px;
+  font-size: 1.5rem;
+  color: rgb(70, 70, 70);
 }
 
-.login-form > button {
-  background-color: rgb(141, 141, 141);
-  color: white;
-  font-size: 2rem;
+.button-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+.button-box > button {
+  background-color: transparent;
+  color: rgb(247, 247, 247);
+  font-size: 1.2rem;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  min-width: 170px;
+  border-bottom: 1px solid rgb(223, 223, 223);
+}
+.button-box > button:hover {
+  background-color: rgb(236, 236, 236);
+  color: rgb(58, 58, 58);
+  font-size: 1.2rem;
   padding: 1rem 0.5rem;
   margin-bottom: 1rem;
   border-radius: 1rem;
   border: none;
-  width: auto;
-}
-
-.login-form > label {
-  margin: 1rem 0;
-  font-size: 2rem;
-  font-weight: 600;
+  min-width: 170px;
 }
 
 .login-form > nav {

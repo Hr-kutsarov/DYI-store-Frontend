@@ -7,7 +7,7 @@ export const LoginForm = (props) => {
   // set login and username state globally
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const logIn = useAuthStore((state) => state.logIn);
-  const logout = useAuthStore((state) => state.logout);
+
   const username = useAuthStore((state) => state.username);
   const setUsername = useAuthStore((state) => state.setUsername);
   const setToken = useAuthStore((state) => state.setToken);
@@ -60,28 +60,6 @@ export const LoginForm = (props) => {
     setErr("");
   };
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
-
-    api
-      .get("api_auth/logout/", {
-        headers: {},
-      })
-      .then(function (response) {
-        if (response.status === 200) {
-          console.log(
-            `${response.status} status code. You have successfully logged out. Congratulations!`
-          );
-          // logging out sets the login state to False and clears the error fields
-          logout();
-          setErr("");
-        }
-      })
-      .catch(function (error) {
-        // TODO: Catch errors
-      });
-  };
-
   const handleRegisterBtn = () => {
     // sets the registered state to True, wanting to register triggers the Register panel
     onRegister();
@@ -89,7 +67,7 @@ export const LoginForm = (props) => {
 
   return (
     <div id="login-form-box" onSubmit={handleSubmit}>
-      <form className="login-form" onS>
+      <form className="login-form">
         {!isLoggedIn && (
           <>
             <div className="error">{err}</div>
@@ -107,15 +85,11 @@ export const LoginForm = (props) => {
               value={pwd}
               onChange={onPasswordChange}
             ></input>
-            <button onClick={handleSubmit}>Submit</button>
-            <nav onClick={handleRegisterBtn}>Register here.</nav>
+            <div className="button-box">
+              <button onClick={handleSubmit}>Submit</button>
+              <button onClick={handleRegisterBtn}>Register here.</button>
+            </div>
           </>
-        )}
-
-        {isLoggedIn && (
-          <button id="logout" onClick={handleLogout}>
-            Logout
-          </button>
         )}
       </form>
     </div>
