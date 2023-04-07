@@ -61,7 +61,7 @@ export const RegisterForm = (props) => {
     <>
       {wantsToRegister && !isLoggedIn && (
         <div id="register-form-box" onSubmit={handleSubmit}>
-          <form className="register-form" onS>
+          <form className="register-form">
             <div className="error">{err}</div>
             <label id="register-form-label">Register</label>
             <input
@@ -77,12 +77,14 @@ export const RegisterForm = (props) => {
               value={pwd}
               onChange={onPasswordChange}
             ></input>
-            <button className="btn" onClick={handleSubmit}>
-              Submit
-            </button>
-            <button className="btn" onClick={handleRegisterState}>
-              I dont want to register.
-            </button>
+            <div className="button-box">
+              <button className="btn" onClick={handleSubmit}>
+                Submit
+              </button>
+              <button className="btn" onClick={handleRegisterState}>
+                I dont want to register.
+              </button>
+            </div>
           </form>
         </div>
       )}

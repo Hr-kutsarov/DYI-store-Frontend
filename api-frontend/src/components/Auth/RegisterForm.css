@@ -1,26 +1,20 @@
+#register-form-box {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  min-height: 70vh;
+}
+
 .register-form {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: rgb(245, 245, 245);
-  padding: 2rem 4rem;
-}
-
-.register-form > input {
-  font-size: 2rem;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
-}
-
-.register-form > button {
-  background-color: rgb(141, 141, 141);
-  color: white;
-  font-size: 2rem;
-  padding: 1rem 0.5rem;
-  margin-bottom: 1rem;
-  border-radius: 1rem;
   border: none;
-  width: auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  max-width: 670px;
+  border-radius: 1rem;
+  padding: 4rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .register-form > label {
@@ -28,3 +22,40 @@
   margin-bottom: 2rem;
   font-weight: 700;
 }
+
+.register-form > label {
+  font-size: 2rem;
+  font-weight: 500;
+  color: whitesmoke;
+}
+.register-form > input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  min-width: 370px;
+  max-width: 470px;
+  font-size: 1.5rem;
+  color: rgb(70, 70, 70);
+  max-height: 4rem;
+}
+
+/* .register-form > button {
+  margin: auto;
+  background-color: transparent;
+  color: rgb(247, 247, 247);
+  font-size: 1.2rem;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  min-width: 170px;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  max-width: 60%;
+  border-radius: 1rem;
+} */
+
+/* .register-form > button:hover {
+  background-color: white;
+  color: rgb(48, 48, 48);
+} */

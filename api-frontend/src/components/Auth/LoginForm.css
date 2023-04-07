@@ -8,12 +8,14 @@
 .login-form {
   display: grid;
   grid-template-columns: 1fr;
-  background-color: rgb(235, 235, 235, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   max-width: 670px;
-  padding: 2rem;
+  border-radius: 1rem;
+  padding: 4rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
+
 #login-form-label {
   font-size: 2rem;
   font-weight: 500;
@@ -27,7 +29,7 @@
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   border: none;
-  max-width: 470px;
+
   font-size: 1.5rem;
   color: rgb(70, 70, 70);
 }
@@ -40,6 +42,7 @@
   padding: 1rem;
 }
 .button-box > button {
+  height: 4rem;
   background-color: transparent;
   color: rgb(247, 247, 247);
   font-size: 1.2rem;

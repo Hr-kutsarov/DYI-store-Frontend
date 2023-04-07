@@ -57,8 +57,10 @@ function App() {
     <>
       <Header />
       {!isLoggedIn && <CompanyInfo />}
-      <div className="login-form-box">{!isLoggedIn && <LoginForm />}</div>
+
       <RegisterForm />
+
+      {!isLoggedIn && <LoginForm />}
 
       {isLoggedIn && (
         <>

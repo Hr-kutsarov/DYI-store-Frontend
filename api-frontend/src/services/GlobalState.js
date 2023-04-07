@@ -18,6 +18,7 @@ export const useAuthStore = create((set) => ({
   logIn: () => set((state) => ({ isLoggedIn: (state.isLoggedIn = true) })),
   logout: () => set((state) => ({ isLoggedIn: (state.isLoggedIn = false) })),
   //
+  //
   registered: false,
   dontWantToRegister: () =>
     set((state) => ({ registered: (state.registered = false) })),

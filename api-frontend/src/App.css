@@ -13,3 +13,8 @@
   background-color: transparent;
   border-radius: 1rem;
 }
+
+textarea:focus,
+input:focus {
+  outline: none;
+}

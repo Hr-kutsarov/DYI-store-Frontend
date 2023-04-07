@@ -60,13 +60,14 @@ export const LoginForm = (props) => {
     setErr("");
   };
 
-  const handleRegisterBtn = () => {
+  const handleRegisterBtn = (e) => {
+    e.preventDefault();
     // sets the registered state to True, wanting to register triggers the Register panel
     onRegister();
   };
 
   return (
-    <div id="login-form-box" onSubmit={handleSubmit}>
+    <div id="login-form-box" className="login-form-box" onSubmit={handleSubmit}>
       <form className="login-form">
         {!isLoggedIn && (
           <>
