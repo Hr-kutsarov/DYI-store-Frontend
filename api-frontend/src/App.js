@@ -65,11 +65,10 @@ function App() {
       {isLoggedIn && (
         <>
           {toggledProductCreatePanel && <CreateProduct />}
-          <Search />
-          <ProductList />
-
           {toggledProductEditPanel && <EditProduct />}
+          <Search />
           {toggledProductDetailsPanel && <ProductDetails />}
+          <ProductList />
         </>
       )}
       <Footer />

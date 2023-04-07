@@ -1,5 +1,23 @@
-.company-info {
-  background-color: transparent;
-  display: block;
-  height: 15rem;
+.project-info {
+  display: grid;
+  background-color: rgba(255, 255, 255, 0.205);
+  max-width: 670px;
+  margin: auto;
+  padding: 4rem;
+  margin-top: 2rem;
+  color: white;
+  box-shadow: rgba(50, 50, 93, 0.15) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.project-info > article {
+  margin: 2rem;
+  font-size: 1.2rem;
+}
+.project-info > article > h1 {
+  margin-bottom: 1rem;
+}
+
+.project-info > article > p {
+  margin-bottom: 1rem;
+  text-align: justify;
 }

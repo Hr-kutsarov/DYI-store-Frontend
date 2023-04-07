@@ -1,11 +1,12 @@
 header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   min-height: 10vh;
-  background-color: #f3f3f3e5;
+  background-color: #ffffffe5;
   color: rgb(31, 53, 82);
   padding: 2rem;
+  min-width: 670px;
+  justify-content: space-between;
 }
 
 h1 {
@@ -25,7 +26,7 @@ h1 {
 #logout:hover {
   border: none;
   background-color: rgb(31, 53, 82);
-  color: whitesmoke;
+  color: rgb(253, 253, 253);
   border-radius: 0.5rem;
 }
 

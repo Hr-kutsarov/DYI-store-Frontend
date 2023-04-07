@@ -43,7 +43,8 @@ export const Product = ({
     refreshList();
   };
 
-  let pricePerUnit = (price / quantity).toFixed(2);
+  // let pricePerUnit = (price / quantity).toFixed(2);
+
   return (
     <li className="product-list" key={id}>
       <div
@@ -58,7 +59,7 @@ export const Product = ({
       <div className="property">{title}</div>
       <div className="property">{sectionString(section)}</div>
 
-      <div className="property">{pricePerUnit}</div>
+      <div className="property">{price}</div>
       <div className="property">{status}</div>
       <div className="property">
         Q:

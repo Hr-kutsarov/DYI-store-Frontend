@@ -11,7 +11,7 @@ export const Header = () => {
   const logout = useAuthStore((state) => state.logout);
   const offEditPanel = useAuthStore((state) => state.offEditPanel);
 
-  const offDetailsPanel = useAuthStore((state) => state.onDetailsPanel);
+  const offDetailsPanel = useAuthStore((state) => state.offDetailsPanel);
   const onCreatePanel = useAuthStore((state) => state.onCreatePanel);
   const handleAddProduct = () => {
     onCreatePanel();

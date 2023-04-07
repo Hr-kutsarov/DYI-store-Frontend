@@ -1,12 +1,13 @@
 import React from "react";
 import "./ProductList.css";
-
+import api from '../Api/utils.js'
 
 import { useAuthStore } from "../services/GlobalState";
 
 export const SearchedData = () => {
     const searchedData = useAuthStore((state) => state.searchedData);
     const searchData = useAuthStore((state) => state.searchData)
+
 
 
     const allStores = useAuthStore((state) => state.allStores);
@@ -24,21 +25,29 @@ export const SearchedData = () => {
       return filtered[0]["name"];
     };
 
+
+
     if (searchData) {
         return searchedData.map((p) => {
             return (
               <li className="product-list" key={p.id}>
-                <span>{p.id}</span>
-                <span>{p.title}</span>
-                <span>{sectionString(p.section)}</span>
+                <div
+                  className="property"
+                  id="actions-product-list">
+                <button id="show-info-btn" className="round-btn" >
+                  info
+                </button>
+                </div>
+                <div className="property">{p.title}</div>
+                <div className="property">{sectionString(p.section)}</div>
                 
-                <span>{(p.price / p.quantity).toFixed(2)}</span>
-                <span>{p.status}</span>
-                <span>
+                <div className="property">{p.price}</div>
+                <div className="property">{p.status}</div>
+                <div className="property">
                   Q:
                   {p.quantity}
-                </span>
-                <span>{locationString(p.location)}</span>
+                </div>
+                <div className="property">{locationString(p.location)}</div>
               </li>
             );
           });

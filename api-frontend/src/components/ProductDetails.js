@@ -62,25 +62,27 @@ export const ProductDetails = () => {
   return (
     <>
       <section className="product-details">
-        <figure>
-          <img alt="" src={productDetails.thumbnail}></img>
-        </figure>
-        <h3>{productDetails.title}</h3>
-        <p>Details: {productDetails.type}</p>
-        <p>Price per unit: {pricePerUnit()}</p>
-        <p>Location: {displayStoreName(productDetails.location)}</p>
-        <p>Section: {displaySectionName(productDetails.section)}</p>
-        <p>Quantity: {productDetails.quantity}</p>
-        <p>Description: {productDetails.description}</p>
-        <p>Status: {productDetails.status}</p>
-        {productDetails.is_featured ? <p>FEATURED</p> : <p>Not featured</p>}
-        <div className="delete-msg-box">{msg}</div>
-        <div className="button-wrapper-info">
-          <button onClick={editProductHandler}>Edit</button>
-          <button id="delete-product" onClick={deleteProductHandler}>
-            Delete
-          </button>
-          <button onClick={handleHide}>Hide</button>
+        <div className="primary-info">
+          <h3>{productDetails.title}</h3>
+          <div className="button-wrapper-info">
+            <button onClick={editProductHandler}>Edit</button>
+            <button id="delete-product" onClick={deleteProductHandler}>
+              Delete
+            </button>
+            <button onClick={handleHide}>Hide</button>
+          </div>
+        </div>
+
+        <div class="secondary-info">
+          <p className="delete-msg-box">{msg}</p>
+          <p>Details: {productDetails.type}</p>
+          <p>Price per unit: {pricePerUnit()}</p>
+          <p>Location: {displayStoreName(productDetails.location)}</p>
+          <p>Section: {displaySectionName(productDetails.section)}</p>
+          <p>Quantity: {productDetails.quantity}</p>
+          <p>Description: {productDetails.description}</p>
+          <p>Status: {productDetails.status}</p>
+          {productDetails.is_featured ? <p>FEATURED</p> : <p>Not featured</p>}
         </div>
       </section>
     </>

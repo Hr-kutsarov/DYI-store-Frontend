@@ -2,6 +2,7 @@ import "./CreateProduct.css";
 import { useAuthStore } from "../services/GlobalState";
 import { useState } from "react";
 import api from "../Api/utils.js";
+import { FaBeer } from "react-icons/fa";
 
 export const CreateProduct = () => {
   // global state
@@ -76,8 +77,12 @@ export const CreateProduct = () => {
     <>
       <div className="create-products-box">
         <form>
-          <h2>Create new product:</h2>
-          <div className="create-msg">{msg}</div>
+          <h2>Create new product</h2>
+          {msg && (
+            <div className="create-msg">
+              <FaBeer /> {msg}
+            </div>
+          )}
           <input
             id="edit-title"
             type="text"

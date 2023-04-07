@@ -1,33 +1,57 @@
 .product-details {
+  color: whitesmoke;
   display: grid;
+  grid-template-columns: 40% 60%;
+  width: 670px;
   margin: auto;
-  padding: 2rem;
-  max-width: 1000px;
+  padding: 1rem;
+  background-color: hsl(0, 0%, 100%, 0.2);
+  margin-bottom: 2rem;
 }
 
-.product-details > h3 {
-  margin: 1rem;
+.primary-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
 }
-.product-details > p {
-  margin: 0.5rem 1rem;
+
+.primary-info > h3 {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 
 .button-wrapper-info {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  margin: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
 }
 
 .button-wrapper-info > button {
-  margin-right: 0.7rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.2rem;
-  background-color: grey;
-  color: white;
+  background: linear-gradient(
+    170deg,
+    hsl(193, 78%, 49%, 0.2) 0%,
+    rgba(0, 8, 81, 0.296) 100%
+  );
   border: none;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  color: whitesmoke;
 }
 
-#delete-product {
-  background-color: rgb(236, 77, 77);
+.button-wrapper-info > button:hover {
+  background-color: whitesmoke;
+
+  color: rgb(36, 36, 36);
+}
+.secondary-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.secondary-info > p {
+  margin: 0.5rem;
 }

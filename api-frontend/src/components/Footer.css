@@ -4,6 +4,9 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+  /* remove this later  */
+  margin-top: 6rem;
+  /* remove this later  */
 }
 
 footer > span {
